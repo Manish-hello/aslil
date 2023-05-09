@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>
+man
+</title>
+<style type="text/css" media="screen">
+	div{
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.drop{
+		height: 50px;
+		width: 50px;
+	}
+	.pipe{
+		height: 100px;
+		width: 240px;
+	}
+	.hand{
+		height: 180px;
+		width: 180px;
+	}
+	.hand{
+		transform:rotate(150deg);
+		position:absolute;
+		left:470;
+		top:260;
+	}
+	.pipe{
+		transform:rotateZ(240deg);
+		position: absolute;
+		left:470;
+		top:270;
+	}
+	.drop{
+		height:80px;
+		width: 80px;
+		left:680;
+		top:380;
+		position:absolute;
+		display:none;
+	}
+	#start,#score{
+		style:none;
+	}
+</style>
+</head>
+<body>
+	<h3>WAIT FOR START <span id="start">......</span></h3>
+	<h3>Score:<span id="score">0</span></h3>
+	<div>
+		<img onclick="man()" class="hand" src="han.png" alt="hand">
+		<img class="pipe" onclick="mani()" src="pip.png" alt="hand">
+		<img class="drop" src="drop.png" alt="hand">
+	</div>
+
+
+
+<script type="text/javascript" charset="utf-8" async defer>
+ 	let mann=document.querySelector('.hand');
+ 	let manni=document.querySelector('.drop');
+ 	let up=false;
+ 	let x=0;
+ 	let gameOver=true;
+ 	function man(){
+ 		if(!gameOver){
+	 		if(up){
+	 			mani();
+	 		}
+	 		else{
+	 			mann.style.translate='-30px -30px';	
+
+	 		}
+	 		up=!up;
+	 		x++;
+	 		document.querySelector('#score').innerHTML=x;
+		}
+
+ 	};
+ 	setTimeout(()=>{
+ 		gameOver=false;
+ 		document.querySelector('#start').innerHTML="Hallauna THAL MUJI!!";
+ 		setTimeout(()=>{
+ 			let msg=document.querySelector('#start')
+ 			msg.innerHTML="gameOver";
+ 			gameOver=true;
+ 			manni.style.display='flex';
+ 			if(x<50){
+ 				msg.innerHTML+="<br>Thukka randi Baijitye<br> la lado kha bajya 🍆";
+ 			}
+ 			else if(x<100){
+ 				msg.innerHTML+="<br>Cholna na janne lado tedo 🍌";
+ 			}
+ 			else{
+ 				msg.innerHTML+="<br>Cholente Muji 👑";
+
+ 			}
+
+ 		},10000);
+
+ 	},5000);
+
+ 	function mani(){
+ 		mann.style.translate='0px 0px';	
+ 	}
+</script>
+</body>
+</html>
